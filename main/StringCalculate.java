@@ -1,4 +1,3 @@
-package JavaRegex;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -19,6 +18,14 @@ public class StringCalculate {
         if (matcher.find()) {
             str = matcher.replaceAll(matcher.group(1) + "*(");
         }
+
+        pattern = Pattern.compile("\\((.*)\\)\\*\\*([0-9]+)");
+        matcher = pattern.matcher(str);
+
+        if (matcher.find()){
+            String str1 = matcher.group(2);
+        }
+
 
         return "";
     }

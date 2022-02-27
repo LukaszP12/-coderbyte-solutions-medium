@@ -1,8 +1,5 @@
 package JavaRegex;
 
-
-import org.junit.Assert;
-
 public class BinaryReversal2 {
 
     private static String BinaryReversal(String str) {
