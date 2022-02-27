@@ -12,10 +12,8 @@ public class CharacterRemoval4 {
             int prevIndex = 0;
             for (int j = 0; j < word.length(); j++) {
                 char searchC = word.charAt(j);
-                System.out.println("searchC: " + searchC);
                 if (bigWord.indexOf(searchC, prevIndex) != -1) {
                     prevIndex = bigWord.indexOf(searchC, prevIndex) + 1;
-                    System.out.println("prevIndex: " + prevIndex);
                 } else {
                     foundWord = false;
                     break;

@@ -1,5 +1,3 @@
-package JavaRegex;
-
 import java.util.Arrays;
 
 public class SeatingStudents {
@@ -27,6 +25,9 @@ public class SeatingStudents {
     }
 
     public static void main(String[] args) {
-
+        int[] ints = {6, 4};
+        System.out.println(SeatingStudents(ints));
+        int[] ints1 = {8, 1, 8};
+        System.out.println(SeatingStudents(ints1));
     }
 }
