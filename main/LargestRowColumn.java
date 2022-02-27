@@ -1,6 +1,7 @@
-package JavaRegex;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class LargestRowColumn {
@@ -23,13 +24,9 @@ public class LargestRowColumn {
             for (int j = 0; j < matrix.get(0).size(); j++) {
                 max = Math.max(max, walk(matrix, i, j, 1, 0));
             }
-
-            return String.valueOf(max);
         }
 
-
-        // code goes here
-        return strArr[0];
+        return String.valueOf(max);
     }
 
     public static int walk(List<List<Integer>> matrix, int i, int j, int count, int sum) {
@@ -40,6 +37,7 @@ public class LargestRowColumn {
         int cellValue = matrix.get(i).get(j);
 
         if (count == 3) {
+
             if (evaluateSum(matrix, sum + cellValue)) {
                 return sum + cellValue;
             }
@@ -47,7 +45,16 @@ public class LargestRowColumn {
             return 0;
         }
 
-        return 0;
+        matrix.get(i).set(j, -1);
+
+        int left = walk(matrix, i, j - 1, count + 1, sum + cellValue);
+        int top = walk(matrix, i - 1, j, count + 1, sum + cellValue);
+        int right = walk(matrix, i, j + 1, count + 1, sum + cellValue);
+        int down = walk(matrix, i + 1, j, count + 1, sum + cellValue);
+
+        matrix.get(i).set(j, cellValue);
+
+        return Collections.max(Arrays.asList(left, top, right, down));
     }
 
     public static boolean evaluateSum(List<List<Integer>> matrix, int number) {
@@ -58,8 +65,10 @@ public class LargestRowColumn {
 
     public static void main(String[] args) {
         String[] strings = {"234", "999", "999"};
+        System.out.println(LargestRowColumn(strings));
 
-        String[] strings1 = {"11111", "22222"};
+//        String[] strings1 = {"11111", "22222"};
+//        System.out.println(LargestRowColumn(strings1));
     }
 
 }
